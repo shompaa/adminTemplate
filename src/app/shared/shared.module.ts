@@ -9,17 +9,19 @@ import { HeaderComponent } from './header/header.component';
 
 // Modulos
 import { RouterModule } from '@angular/router';
+import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
     imports: [
         RouterModule,
-        CommonModule
+        CommonModule,
+        PipesModule
     ],
     declarations: [
         BreadcrumbsComponent,
         HeaderComponent,
         SidebarComponent,
-        NopagefoundComponent
+        NopagefoundComponent,
     ],
     exports: [
         BreadcrumbsComponent,
