@@ -18,9 +18,11 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ModalUploadComponent } from '../components/modal-upload/modal-upload.component';
 
 // Rutas
 import { PAGES_ROUTE } from './pages.routes';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import { PAGES_ROUTE } from './pages.routes';
         AccountSettingsComponent,
         PromesasComponent,
         RxjsComponent,
-        ProfileComponent
+        ProfileComponent,
+        UsuariosComponent,
+    ModalUploadComponent
     ],
     exports: [
         DashboardComponent,

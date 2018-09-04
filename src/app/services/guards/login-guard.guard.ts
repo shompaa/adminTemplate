@@ -11,12 +11,10 @@ export class LoginGuardGuard implements CanActivate {
   }
 
   canActivate() {
-
     if (this.us.estaLogueado()) {
-      console.log('Wardiola');
       return true;
     } else {
-      console.log('Bloqueo');
+      console.log('Bloqueo por guard');
       this.router.navigate(['/login']);
       return false;
     }
