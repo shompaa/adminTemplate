@@ -1,0 +1,59 @@
+<div class="row animated fadeIn">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <input #input (keyup)='buscarMedico(input.value)' type="text" class="form-control" placeholder="Buscar médico">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="text-right">
+                    <button type='button' [routerLink]="['/medico','nuevo']" class='btn waves-effect waves-light btn-rounded btn-primary'>
+                    <i class="fa fa-plus"></i> Crear médico
+                  </button>
+                </div>
+
+                <h3 class="card-title">Médicos registrados ( <small>{{ms.totalMedicos}}</small> )</h3>
+                <table class="table table-condensed table-hover">
+                    <thead>
+                        <tr>
+                            <th>Imagen</th>
+                            <th>Médico</th>
+                            <th>Hospital</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="ms.totalMedicos > 0">
+                        <tr *ngFor="let m of medicos">
+                            <td class="w70">
+                                <img [src]="m.img | imagen:'medico'" class="img-50">
+                            </td>
+                            <td>{{m.nombre}}</td>
+                            <td>{{m.hospital.nombre}}</td>
+                            <td>
+                                <button [routerLink]="['/medico', m._id]" class='btn btn-primary btn-sm'><i class='fa fa-edit'></i></button>
+                                <button (click)="borrarMedico(m)" class='btn btn-danger btn-sm'><i class='fa fa-trash-o'></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tbody *ngIf="ms.totalMedicos <= 0">
+                        <tr>
+                            <td colspan="4">
+                                <div class="alert alert-warning" role="alert">
+                                    <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <b> No</b> existen medicos creados
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type='button' (click)='cambiarDesde(-5)' class='btn btn-rounded btn-outline-secondary'><i class="fa fa-arrow-left"></i> Anterior</button>
+                <button type='button' (click)='cambiarDesde(5)' class='btn btn-rounded btn-outline-secondary'>Siguiente <i class="fa fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </div>
+</div>

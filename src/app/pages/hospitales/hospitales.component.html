@@ -1,0 +1,71 @@
+<div class="row animated fadeIn">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <input #input (keyup)='buscarHospital(input.value)' type="text" class="form-control" placeholder="Buscar hospital">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row animated fadeIn" *ngIf="cargando">
+    <div class="col-sm-12">
+        <div class='alert alert-warning text-center'>
+            <b>Cargando</b>
+            <br>
+            <i class='fa fa-refresh fa-spin fa-2x'></i>
+            <br>
+            <span>Espere por favor</span>
+        </div>
+    </div>
+</div>
+
+<div class="row animated fadeIn" *ngIf="!cargando">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="text-right">
+                    <button type='button' (click)="crearHospital()" class='btn waves-effect waves-light btn-rounded btn-primary'>
+                    <i class="fa fa-plus"></i> Crear hospital
+                  </button>
+                </div>
+
+                <h3 class='card-title'>Hospitales resgistrados ( <small>{{hs.totalHospitales}}</small> )</h3>
+                <table class='table table-condensed table-hover'>
+                    <thead>
+                        <tr>
+                            <th>Imagen</th>
+                            <th>Hospital</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="hs.totalHospitales > 0">
+                        <tr *ngFor="let h of hospitales">
+                            <td class="w70">
+                                <img (click)="actualizarImagen(h._id)" [src]="h.img | imagen:'hospital'" class="img-50 pointer">
+                            </td>
+                            <td>
+                                <input [(ngModel)]="h.nombre" name="nombre" placeholder="Nombre del hospital" class="form-control" type="text">
+                            </td>
+                            <td>
+                                <button (click)="guardarHospital(h)" class='btn btn-primary btn-sm'><i class='fa fa-save'></i></button>
+                                <button (click)="borrarHospital(h)" class='btn btn-danger btn-sm'><i class='fa fa-trash-o'></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tbody *ngIf="hs.totalHospitales <= 0">
+                        <tr>
+                            <td colspan="4">
+                                <div class="alert alert-warning" role="alert">
+                                    <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <b> No</b> existen hospitales creados
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type='button' (click)='cambiarDesde(-5)' class='btn btn-rounded btn-outline-secondary'><i class="fa fa-arrow-left"></i> Anterior</button>
+                <button type='button' (click)='cambiarDesde(5)' class='btn btn-rounded btn-outline-secondary'>Siguiente <i class="fa fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </div>
+</div>

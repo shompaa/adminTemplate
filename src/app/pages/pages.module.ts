@@ -19,10 +19,13 @@ import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ModalUploadComponent } from '../components/modal-upload/modal-upload.component';
+import { MedicosComponent } from './medicos/medicos.component';
+import { MedicoComponent } from './medicos/medico.component';
 
 // Rutas
 import { PAGES_ROUTE } from './pages.routes';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { HospitalesComponent } from './hospitales/hospitales.component';
 
 
 @NgModule({
@@ -38,7 +41,10 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
         RxjsComponent,
         ProfileComponent,
         UsuariosComponent,
-    ModalUploadComponent
+        ModalUploadComponent,
+        HospitalesComponent,
+        MedicosComponent,
+        MedicoComponent,
     ],
     exports: [
         DashboardComponent,
